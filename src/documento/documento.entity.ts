@@ -12,7 +12,7 @@ export class DocumentoEntity {
     nombre: string;
 
     @Column({length: 255})
-    detalle: string;
+    descripcion: string;
 
     @ManyToOne(type => NivelEntity)
     nivel: NivelEntity;
