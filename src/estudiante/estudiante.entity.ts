@@ -1,6 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany, ManyToOne, JoinColumn } from "typeorm";
 import { SolicitudEntity} from "../solicitud/solicitud.entity"
-import { NivelEntity } from "../nivel.entity"; 
+import { NivelEntity } from "../nivel/nivel.entity"; 
 
 @Entity('estudiante')
 export class EstudianteEntity {
@@ -24,7 +24,11 @@ export class EstudianteEntity {
     creado: Date;
     
     @ManyToOne(type => NivelEntity)
+    @JoinColumn({name: "nivelId"})
     nivel: NivelEntity;
+
+    @Column()
+    nivelId: string;
 
     @Column()
     estado: string;

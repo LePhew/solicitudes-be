@@ -10,7 +10,7 @@ export class NivelEntity {
     nombre: string;
 
     @Column()
-    decripcion: string;
+    descripcion: string;
 
     @Column({type: "int"})
     orden: number;
