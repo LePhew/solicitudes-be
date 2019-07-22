@@ -29,5 +29,5 @@ export class DocumentoEntity {
     institucionId:string;
 
     @CreateDateColumn()
-    creado: string;
+    creado: Date;
 }

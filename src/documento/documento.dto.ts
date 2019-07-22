@@ -4,6 +4,6 @@ export interface DocumentoDTO{
     descripcion: string;
     nivelId: string;
     institucionId: string;
-
+    
 
 }
