@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToMany, JoinTable, OneToMany, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToMany, JoinTable, OneToMany, ManyToOne, JoinColumn } from "typeorm";
 import { DocumentoEntity } from "../documento/documento.entity";
 import { EstudianteEntity } from "../estudiante/estudiante.entity";
 
@@ -9,7 +9,11 @@ export class SolicitudEntity {
     id: string;
 
     @ManyToOne(type => EstudianteEntity, estudiante => estudiante.solicitudes)
+    @JoinColumn({name: "estudianteId"})
     estudiante: EstudianteEntity;
+
+    @Column()
+    estudianteId: string;
 
     @CreateDateColumn()
     creada: Date;

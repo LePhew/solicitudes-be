@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SolicitudEntity } from './solicitud.entity';
 import { Repository } from 'typeorm';
+import { SolicitudDTO } from './solicitud.dto';
 
 @Injectable()
 export class SolicitudService {
@@ -9,11 +10,32 @@ export class SolicitudService {
     constructor(@InjectRepository(SolicitudEntity) private solicitudRepository: Repository<SolicitudEntity>){}
 
 
-    async crearSolicitud(){}
+    async getSolicitudes(){
+        return await this.solicitudRepository.find({relations: ['estudiante', 'documentos']});
+    }
 
-    async borrarSolicitud(){}
+    async getSolicitud(solicitudId: string){
+        return await this.solicitudRepository.findOne({
+            where: { id: solicitudId },
+            relations: ['estudiante', 'documentos']});
+    }
 
-    async actualizarSolicitud(){}
+    async crearSolicitud(data: SolicitudDTO){
+        const solicitud = this.solicitudRepository.create(data);
+        await this.solicitudRepository.save(solicitud);
+        return solicitud;
+    }
+    
+    async actualizarSolicitud(id: string, data: Partial<SolicitudDTO>){
+        return await this.solicitudRepository.update(id, data);
+    }
+    
+    async borrarSolicitud(id: string){
+        await this.solicitudRepository.delete(id);
+        return {solicitudDeleted: true};
+    }
+
+
 
 
 
