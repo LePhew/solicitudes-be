@@ -35,10 +35,9 @@ export class EstudianteEntity {
 
     @BeforeInsert()
     generarMatricula(){
-        let year: Date;
-        year.getFullYear().toString();
-        let number: number = Math.floor((Math.random()*1000000)+1);
-        this.matricula = `${year}-${number}`;
-    }
-
+        let year = new Date().getFullYear().toString();
+            let number = Math.floor((Math.random()*10000)+1);
+            let matricula = `${year}-${number}`;
+            this.matricula = matricula;
+        }
 }
