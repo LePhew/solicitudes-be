@@ -15,7 +15,7 @@ export class NivelService {
         return nivel;
     }
     async getAll(){
-        return await this.nivelRepository.find();
+        return await this.nivelRepository.find({order: {orden: "ASC"}});
     }
     
     async getNivel(nivelId: string){
