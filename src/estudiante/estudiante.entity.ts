@@ -18,6 +18,7 @@ export class EstudianteEntity {
     matricula: string;
     
     @OneToMany(type => SolicitudEntity, solicitud => solicitud.estudiante)
+    @JoinColumn()
     solicitudes: SolicitudEntity[];
 
     @CreateDateColumn()
@@ -36,8 +37,8 @@ export class EstudianteEntity {
     @BeforeInsert()
     generarMatricula(){
         let year = new Date().getFullYear().toString();
-            let number = Math.floor((Math.random()*10000)+1);
-            let matricula = `${year}-${number}`;
-            this.matricula = matricula;
-        }
+        let number = Math.floor((Math.random()*10000)+1);
+        let matricula = `${year}-${number}`;
+        this.matricula = matricula;
+    }
 }

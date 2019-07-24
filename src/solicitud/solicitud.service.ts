@@ -16,7 +16,7 @@ export class SolicitudService {
 
     async getSolicitud(solicitudId: string){
         return await this.solicitudRepository.findOne({
-            where: { id: solicitudId },
+            where: { solicitudId },
             relations: ['estudiante', 'documentos']});
     }
 
