@@ -15,18 +15,18 @@ export class DocumentoEntity {
     @Column({length: 255})
     descripcion: string;
 
-    @ManyToMany(type => SolicitudEntity)
+    @ManyToMany(() => SolicitudEntity)
     @JoinTable({name: "solicitud_documentos"})
     solicitudes: SolicitudEntity[];
 
-    @ManyToOne(type => NivelEntity, {nullable: true})
+    @ManyToOne(() => NivelEntity, {nullable: true})
     @JoinColumn({name: "nivelId"})
     nivel: NivelEntity;
 
     @Column()
     nivelId: string;
 
-    @ManyToOne(type => InstitucionEntity, {nullable: true})
+    @ManyToOne(() => InstitucionEntity, {nullable: true})
     @JoinColumn({name: "institucionId"})
     institucion: InstitucionEntity;
 

@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BeforeInsert, JoinTable, ManyToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BeforeInsert, JoinTable, ManyToMany, Generated } from "typeorm";
 import { DocumentoEntity } from "../documento/documento.entity";
 import { EstudianteEntity } from "../estudiante/estudiante.entity";
+import { Estados } from "../Enum";
 
 @Entity('solicitud')
 export class SolicitudEntity {
@@ -8,19 +9,19 @@ export class SolicitudEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @ManyToOne(type => EstudianteEntity)
+    @Column()
+    solicitudCode: string;
+
+    @ManyToOne(() => EstudianteEntity)
     @JoinColumn({name: "estudianteId"})
     estudiante: EstudianteEntity;
 
     @Column()
     estudianteId: string;
 
-    @ManyToMany(type => DocumentoEntity)
+    @ManyToMany(() => DocumentoEntity)
     @JoinTable({name: "solicitud_documentos"})
     documentos: DocumentoEntity[];
-
-    @Column()
-    documentoId:string;
 
     @CreateDateColumn()
     creada: Date;
@@ -29,11 +30,14 @@ export class SolicitudEntity {
     modificada: Date;
 
     @Column()
-    estado: string;
+    estado: Estados;
 
     @BeforeInsert()
     assignEstado(){
-        this.estado = "Activa";
-    }
-    
+        this.estado = Estados.Activo;
+        let number = Math.floor((Math.random()*1000)+1);
+        let code = "sol-"+number;
+
+        this.solicitudCode = code;
+    }  
 }

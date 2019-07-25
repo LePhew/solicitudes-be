@@ -21,7 +21,7 @@ export class DocumentoService {
     }
 
     async getDocumento(documentoId: string){
-        const documento =  await this.documentoRepository.findOne({where: {id: documentoId}});
+        const documento =  await this.documentoRepository.findOne({where: {id: documentoId}, relations: ['institucion', 'nivel']});
         return documento;
     }
 

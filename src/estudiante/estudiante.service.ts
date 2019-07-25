@@ -9,11 +9,11 @@ export class EstudianteService {
     constructor(@InjectRepository(EstudianteEntity) private estudianteRepository: Repository<EstudianteEntity>){}
 
     async getEstudiantes(){
-        return await this.estudianteRepository.find({relations: ['solicitudes', 'nivel']});
+        return await this.estudianteRepository.find({relations: ['solicitudes', 'nivel', 'institucion']});
     }
 
     async getEstudiante(id: string){
-        return await this.estudianteRepository.findOne({where: {id}, relations: ['solicitudes', 'nivel']});
+        return await this.estudianteRepository.findOne({where: {id}, relations: ['solicitudes', 'nivel', 'institucion']});
     }
 
     async crearEstudiante(data: any){

@@ -1,6 +1,8 @@
+import { DocumentoEntity } from "../documento/documento.entity";
+
 export interface SolicitudDTO {
 
     estudianteId: string;
-    documentoId: string;
+    documentos: DocumentoEntity[];
 
 }

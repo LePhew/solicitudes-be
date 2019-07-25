@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany, ManyToOne, JoinColumn, BeforeInsert } from "typeorm";
 import { SolicitudEntity} from "../solicitud/solicitud.entity"
 import { NivelEntity } from "../nivel/nivel.entity"; 
+import { InstitucionEntity } from "../institucion/institucion.entity";
 
 @Entity('estudiante')
 export class EstudianteEntity {
@@ -17,19 +18,26 @@ export class EstudianteEntity {
     @Column()
     matricula: string;
     
-    @OneToMany(type => SolicitudEntity, solicitud => solicitud.estudiante)
+    @OneToMany(() => SolicitudEntity, solicitud => solicitud.estudiante)
     @JoinColumn()
     solicitudes: SolicitudEntity[];
 
     @CreateDateColumn()
     creado: Date;
     
-    @ManyToOne(type => NivelEntity)
+    @ManyToOne(() => NivelEntity)
     @JoinColumn({name: "nivelId"})
     nivel: NivelEntity;
 
     @Column()
     nivelId: string;
+
+    @ManyToOne(() => InstitucionEntity)
+    @JoinColumn({name: "institucionId"})
+    institucion: InstitucionEntity;
+
+    @Column()
+    institucionId: string;
 
     @Column()
     estado: string;
