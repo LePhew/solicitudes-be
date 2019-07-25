@@ -41,4 +41,9 @@ export class EstudianteEntity {
         let matricula = `${year}-${number}`;
         this.matricula = matricula;
     }
+
+    @BeforeInsert()
+    assingEstado(){
+        this.estado = "Activo";
+    }
 }

@@ -20,7 +20,7 @@ export class SolicitudService {
             relations: ['estudiante', 'documentos']});
     }
 
-    async crearSolicitud(data: SolicitudDTO){
+    async crearSolicitud(data: any){
         const solicitud = this.solicitudRepository.create(data);
         await this.solicitudRepository.save(solicitud);
         return solicitud;
