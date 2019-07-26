@@ -35,6 +35,7 @@ export class SolicitudEntity {
     @BeforeInsert()
     assignEstado(){
         this.estado = Estados.Activo;
+        
         let number = Math.floor((Math.random()*1000)+1);
         let code = "sol-"+number;
 
