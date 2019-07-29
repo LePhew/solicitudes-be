@@ -12,7 +12,7 @@ export class SolicitudController {
         return this.solicitudService.getSolicitudes();
     }
 
-    @Get('id')
+    @Get(':id')
     getSolicitud(@Param('id') id: string){
         return this.solicitudService.getSolicitud(id);
     }
