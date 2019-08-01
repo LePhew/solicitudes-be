@@ -1,6 +1,7 @@
 import { Controller, Get, Param, Post, Body, Put, Delete } from '@nestjs/common';
 import { SolicitudService } from './solicitud.service';
 import { SolicitudDTO } from './solicitud.dto';
+import { SolicitudEntity } from './solicitud.entity';
 
 @Controller('solicitud')
 export class SolicitudController {
@@ -23,7 +24,7 @@ export class SolicitudController {
     }
 
     @Put(':id')
-    actualizarSolicitud(@Param('id') id: string, @Body() data: Partial<SolicitudDTO>){
+    actualizarSolicitud(@Param('id') id: string, @Body() data: Partial<SolicitudEntity>){
         return this.solicitudService.actualizarSolicitud(id, data);
     }
 

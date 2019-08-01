@@ -30,4 +30,9 @@ export class EstudianteService {
         await this.estudianteRepository.delete(id);
         return {estudianteDeleted: true};
     }
+
+    async getEstudianteByMat(matricula: string){
+        return await this.estudianteRepository.findOne({where: {matricula: matricula}, relations: ['solicitudes', 'nivel', 'institucion']});
+    }
 }
+

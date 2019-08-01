@@ -16,6 +16,11 @@ export class EstudianteController {
         return this.estudianteService.getEstudiante(id);
     }
 
+    @Get('bymat/:mat')
+    getEstudianteByMatricula(@Param('mat') matricula: string){
+        return this.estudianteService.getEstudianteByMat(matricula);
+    }
+
     @Post()
     crearEstudiante(@Body() data: any){
         return this.estudianteService.crearEstudiante(data);

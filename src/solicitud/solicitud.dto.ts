@@ -4,5 +4,6 @@ export interface SolicitudDTO {
 
     estudianteId: string;
     documentos: DocumentoEntity[];
+    estado?: number;
 
 }

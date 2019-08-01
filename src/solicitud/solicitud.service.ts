@@ -15,9 +15,7 @@ export class SolicitudService {
     }
 
     async getSolicitud(solicitudId: string){
-        return await this.solicitudRepository.findOne({
-            where: { solicitudId },
-            relations: ['estudiante', 'documentos']});
+        return await this.solicitudRepository.findOne({where: {id: solicitudId}, relations: ['estudiante', 'documentos']})
     }
 
     async crearSolicitud(data: any){
@@ -26,7 +24,7 @@ export class SolicitudService {
         return solicitud;
     }
     
-    async actualizarSolicitud(id: string, data: Partial<SolicitudDTO>){
+    async actualizarSolicitud(id: string, data: any){
         return await this.solicitudRepository.update(id, data);
     }
     
@@ -34,9 +32,4 @@ export class SolicitudService {
         await this.solicitudRepository.delete(id);
         return {solicitudDeleted: true};
     }
-
-
-
-
-
 }
