@@ -17,6 +17,11 @@ export class DocumentoController {
         return this.documentoService.getDocumento(id);
     }
 
+    @Post('/withparam/estudiante')
+    getDocumentosByNivelandInstitucion(@Body('institucionId') institucionId: string, @Body('nivelId') nivelId: string){
+        return this.documentoService.getDocumentosByNivelAndInstitucion(institucionId, nivelId);
+    }
+
     @Post()
     crearDocumento(@Body() data: DocumentoDTO){
         return this.documentoService.crearDocumento(data);

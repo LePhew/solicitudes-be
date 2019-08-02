@@ -12,14 +12,14 @@ export class SolicitudEntity {
     @Column()
     solicitudCode: string;
 
-    @ManyToOne(() => EstudianteEntity)
+    @ManyToOne(() => EstudianteEntity, {eager: true})
     @JoinColumn({name: "estudianteId"})
     estudiante: EstudianteEntity;
 
     @Column()
     estudianteId: string;
 
-    @ManyToMany(() => DocumentoEntity)
+    @ManyToMany(() => DocumentoEntity, {eager: true})
     @JoinTable({name: "solicitud_documentos"})
     documentos: DocumentoEntity[];
 

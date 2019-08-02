@@ -19,14 +19,14 @@ export class DocumentoEntity {
     @JoinTable({name: "solicitud_documentos"})
     solicitudes: SolicitudEntity[];
 
-    @ManyToOne(() => NivelEntity, {nullable: true})
+    @ManyToOne(() => NivelEntity, {nullable: true, eager: true})
     @JoinColumn({name: "nivelId"})
     nivel: NivelEntity;
 
     @Column()
     nivelId: string;
 
-    @ManyToOne(() => InstitucionEntity, {nullable: true})
+    @ManyToOne(() => InstitucionEntity, {nullable: true, eager: true})
     @JoinColumn({name: "institucionId"})
     institucion: InstitucionEntity;
 
