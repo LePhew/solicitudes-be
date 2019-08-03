@@ -11,11 +11,11 @@ export class SolicitudService {
 
 
     async getSolicitudes(){
-        return await this.solicitudRepository.find({relations: ['estudiante', 'documentos']});
+        return await this.solicitudRepository.find();
     }
 
     async getSolicitud(solicitudId: string){
-        return await this.solicitudRepository.findOne({where: {id: solicitudId}, relations: ['estudiante', 'documentos']})
+        return await this.solicitudRepository.findOne({where: {id: solicitudId}})
     }
 
     async crearSolicitud(data: any){
@@ -32,4 +32,5 @@ export class SolicitudService {
         await this.solicitudRepository.delete(id);
         return {solicitudDeleted: true};
     }
+
 }
