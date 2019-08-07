@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { SolicitudEntity } from './solicitud.entity';
 import { Repository } from 'typeorm';
+
 import { SolicitudDTO } from './solicitud.dto';
+import { SolicitudEntity } from './solicitud.entity';
 
 @Injectable()
 export class SolicitudService {
@@ -31,6 +32,10 @@ export class SolicitudService {
     async borrarSolicitud(id: string){
         await this.solicitudRepository.delete(id);
         return {solicitudDeleted: true};
+    }
+
+    async filtrarSolicitudes(properties: any){
+        return await this.solicitudRepository.find({where: properties});
     }
 
 }
