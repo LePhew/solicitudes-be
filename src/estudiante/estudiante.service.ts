@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
 import { InjectRepository } from '@nestjs/typeorm';
 import { EstudianteEntity } from './estudiante.entity';
-import { Repository } from 'typeorm';
 
 @Injectable()
 export class EstudianteService {
@@ -34,5 +35,6 @@ export class EstudianteService {
     async getEstudianteByMat(matricula: string){
         return await this.estudianteRepository.findOne({where: {matricula: matricula}, relations: ['solicitudes', 'nivel', 'institucion']});
     }
+
 }
 
