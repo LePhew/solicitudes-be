@@ -2,7 +2,6 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany, Ma
 import { SolicitudEntity} from "../solicitud/solicitud.entity"
 import { NivelEntity } from "../nivel/nivel.entity"; 
 import { InstitucionEntity } from "../institucion/institucion.entity";
-import * as bcrypt from 'bcrypt';
 
 @Entity('estudiante')
 export class EstudianteEntity {

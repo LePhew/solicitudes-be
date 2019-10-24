@@ -13,11 +13,6 @@ export class SolicitudController {
         return this.solicitudService.getSolicitudes();
     }
 
-    @Get('actions/busqueda')
-    filtrarSolicitudes(@Body() properties: any){
-        return this.solicitudService.filtrarSolicitudes(properties);
-    }
-
     @Get(':id')
     getSolicitud(@Param('id') id: string){
         return this.solicitudService.getSolicitud(id);
@@ -36,6 +31,11 @@ export class SolicitudController {
     @Delete(':id')
     borrarSolicitud(@Param('id') id: string){
         return this.solicitudService.borrarSolicitud(id);
+    }
+
+    @Post('buscar')
+    buscarSolicitud(@Body('criteria') searchCriteria: string){
+        return this.solicitudService.filtrarSolicitudes(searchCriteria);
     }
 
     
