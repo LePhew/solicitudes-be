@@ -1,3 +1,7 @@
 export enum Estados {
-    Activo, EnProceso, Aprovado, Rechazado, Cerrado
+    Activo, EnProceso, Aprobado, Rechazado, Cerrado
+}
+
+export enum TipoNotificacion {
+    Creada, Actualizada, Cerrada
 }

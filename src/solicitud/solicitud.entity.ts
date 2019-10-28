@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BeforeInsert, JoinTable, ManyToMany, Generated } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BeforeInsert, JoinTable, ManyToMany } from "typeorm";
 import { DocumentoEntity } from "../documento/documento.entity";
 import { EstudianteEntity } from "../estudiante/estudiante.entity";
 import { Estados } from "../Enum";
