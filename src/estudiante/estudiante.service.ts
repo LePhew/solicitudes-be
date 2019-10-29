@@ -33,8 +33,12 @@ export class EstudianteService {
     }
 
     async getEstudianteByMat(matricula: string){
-        return await this.estudianteRepository.findOne({where: {matricula: matricula}, relations: ['solicitudes', 'nivel', 'institucion']});
+        return await this.estudianteRepository.findOne({where: {matricula}, relations: ['solicitudes', 'nivel', 'institucion']});
     }
 
+    async getEstudianteByCed(cedula: string){
+        return await this.estudianteRepository.findOne({where: {cedula}, relations: ['solicitudes', 'nivel', 'institucion']});
+    }
+        
 }
 

@@ -15,11 +15,11 @@ export class EstudianteEntity {
     @Column({length: 20})
     apellidos: string;
 
-    @Column()
-    cedula: string;
+    @Column({nullable: true})
+    cedula?: string;
 
-    @Column()
-    password: string;
+    @Column({nullable: true})
+    password?: string;
 
     @Column()
     matricula: string;

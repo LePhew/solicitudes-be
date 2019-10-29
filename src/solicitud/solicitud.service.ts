@@ -8,7 +8,8 @@ import { SolicitudEntity } from './solicitud.entity';
 @Injectable()
 export class SolicitudService {
 
-    constructor(@InjectRepository(SolicitudEntity) private solicitudRepository: Repository<SolicitudEntity>){}
+    constructor(
+        @InjectRepository(SolicitudEntity) private solicitudRepository: Repository<SolicitudEntity>){}
 
 
     async getSolicitudes(){
