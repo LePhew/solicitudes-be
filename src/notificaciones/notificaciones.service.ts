@@ -13,14 +13,16 @@ export class NotificacionesService {
 
     
     async getNotificaciones(){
-
+        return await this.notificacionesEntity.find();
     }
 
-    async enviarNotificaciones(){
-
+    async enviarNotificacionesEmail(){
+        
     }
 
-    async insertarNotificacion(){
-
+    async insertarNotificacion(data: any){
+        const notificacion = this.notificacionesEntity.create(data);
+        await this.notificacionesEntity.save(notificacion);
+        return notificacion;
     }
 }

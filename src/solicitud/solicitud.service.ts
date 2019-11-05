@@ -2,14 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Like } from 'typeorm';
 
-import { SolicitudDTO } from './solicitud.dto';
 import { SolicitudEntity } from './solicitud.entity';
+import { NotificacionesEntity } from '../notificaciones/notificaciones.entity';
 
 @Injectable()
 export class SolicitudService {
 
+
     constructor(
-        @InjectRepository(SolicitudEntity) private solicitudRepository: Repository<SolicitudEntity>){}
+    @InjectRepository(NotificacionesEntity) private notificacionesRepository: Repository<NotificacionesEntity>, 
+    @InjectRepository(SolicitudEntity) private solicitudRepository: Repository<SolicitudEntity>){}
 
 
     async getSolicitudes(){
@@ -21,13 +23,24 @@ export class SolicitudService {
     }
 
     async crearSolicitud(data: any){
-        const solicitud = this.solicitudRepository.create(data);
+        const solicitud = this.solicitudRepository.create(data); ]
         await this.solicitudRepository.save(solicitud);
+
+        const notificacion = this.notificacionesRepository.create();
+        notificacion.tipo = "Creada";
+        notificacion.solicitudId = solicitud[0].id;
+        notificacion.mensaje = `La solicitud ${solicitud[0].solicitudCode} no ha sido antendida`;
+        this.notificacionesRepository.save(notificacion);
+
         return solicitud;
     }
     
     async actualizarSolicitud(id: string, data: any){
-        return await this.solicitudRepository.update(id, data);
+        await this.solicitudRepository.update(id, data);
+        const notificacion = this.notificacionesRepository.create();
+        notificacion.tipo = "Actualizada";
+        notificacion.solicitudId = id;
+        notificacion.mensaje = `La solicitud ${data.solicitudCode} ha sido actualizada`;
     }
     
     async borrarSolicitud(id: string){

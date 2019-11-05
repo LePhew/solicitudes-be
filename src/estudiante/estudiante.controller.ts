@@ -26,6 +26,12 @@ export class EstudianteController {
     getEstudianteByCedula(@Param('ced') cedula: string ){
         return this.estudianteService.getEstudianteByCed(cedula);
     }
+
+    @Post('autenticar')
+    autenticarUsuario(@Body('cedula') cedula: string, @Body('contrasena') contrasena: string ){
+        console.log(cedula, contrasena);
+        return this.estudianteService.autenticar(cedula, contrasena);
+    }
     
     @Post()
     crearEstudiante(@Body() data: EstudianteDTO){

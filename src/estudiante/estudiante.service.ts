@@ -32,6 +32,13 @@ export class EstudianteService {
         return {estudianteDeleted: true};
     }
 
+    async autenticar(cedula: string, contrasena: string){
+        return await this.estudianteRepository.findOne({where: {
+            contrasena,
+            cedula
+        }, relations: ['solicitudes', 'nivel', 'institucion']})
+    }
+
     async getEstudianteByMat(matricula: string){
         return await this.estudianteRepository.findOne({where: {matricula}, relations: ['solicitudes', 'nivel', 'institucion']});
     }

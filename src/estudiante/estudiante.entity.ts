@@ -19,7 +19,7 @@ export class EstudianteEntity {
     cedula?: string;
 
     @Column({nullable: true})
-    password?: string;
+    contrasena?: string;
 
     @Column()
     matricula: string;

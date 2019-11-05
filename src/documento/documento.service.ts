@@ -10,7 +10,7 @@ import { DocumentoDTO } from '../documento/documento.dto';
 export class DocumentoService {
 
     constructor(
-        @InjectRepository(DocumentoEntity) private documentoRepository: Repository<DocumentoEntity>,
+        @InjectRepository(DocumentoEntity) private documentoRepository: Repository<DocumentoEntity>
         ){}
 
 

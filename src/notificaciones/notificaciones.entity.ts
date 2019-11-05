@@ -15,6 +15,6 @@ export class NotificacionesEntity {
     @Column()
     solicitudId: string;
 
-    
-
+    @Column({nullable: true})
+    mensaje: string;
 }
