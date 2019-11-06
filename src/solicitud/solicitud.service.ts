@@ -23,13 +23,13 @@ export class SolicitudService {
     }
 
     async crearSolicitud(data: any){
-        const solicitud = this.solicitudRepository.create(data); ]
+        const solicitud = this.solicitudRepository.create(data);
         await this.solicitudRepository.save(solicitud);
 
         const notificacion = this.notificacionesRepository.create();
         notificacion.tipo = "Creada";
-        notificacion.solicitudId = solicitud[0].id;
-        notificacion.mensaje = `La solicitud ${solicitud[0].solicitudCode} no ha sido antendida`;
+        notificacion.solicitudId = solicitud['id'];
+        notificacion.mensaje = `La solicitud ${solicitud['solicitudCode']} no ha sido antendida`;
         this.notificacionesRepository.save(notificacion);
 
         return solicitud;
