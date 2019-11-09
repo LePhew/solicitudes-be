@@ -19,4 +19,10 @@ export class NotificacionesController {
     insertarNotificacion(@Body() data: NotificacionDTO){
         return this.notificacionesService.insertarNotificacion(data);
     }
+
+    @Post('vistas')
+    notificacionesVistas(){
+        this.notificacionesService.marcarVistas();
+    }
 }
+                                    

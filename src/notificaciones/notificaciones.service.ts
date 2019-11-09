@@ -7,13 +7,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class NotificacionesService {
 
     constructor(
-        @InjectRepository(NotificacionesEntity) private notificacionesEntity: Repository<NotificacionesEntity>
+        @InjectRepository(NotificacionesEntity) private notificacionesRepository: Repository<NotificacionesEntity>
         ){}
 
 
     
     async getNotificaciones(){
-        return await this.notificacionesEntity.find();
+        return await this.notificacionesRepository.find({where: {vista: 0}});
     }
 
     async enviarNotificacionesEmail(){
@@ -21,8 +21,20 @@ export class NotificacionesService {
     }
 
     async insertarNotificacion(data: any){
-        const notificacion = this.notificacionesEntity.create(data);
-        await this.notificacionesEntity.save(notificacion);
+        const notificacion = this.notificacionesRepository.create(data);
+        await this.notificacionesRepository.save(notificacion);
         return notificacion;
     }
+    
+    async marcarVistas(){
+        const notificaciones = await this.notificacionesRepository.find({where: {vista: 0}});
+        notificaciones.forEach((item) => {            
+            item['vista'] = 1;
+            this.notificacionesRepository.update(item['id'], item);
+        })
+    }
+
+
+    
+
 }

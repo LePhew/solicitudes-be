@@ -17,4 +17,9 @@ export class NotificacionesEntity {
 
     @Column({nullable: true})
     mensaje: string;
+
+    @Column({
+        default: 0
+    })
+    vista: number;
 }
