@@ -38,10 +38,11 @@ export class DocumentoService {
 
     }
 
-    async actualizarDocumento(documentoId: string, data: Partial<DocumentoDTO>){
-          await this.documentoRepository.update(documentoId, data);
-          const documento = this.documentoRepository.findOne({where: {id: documentoId}});
-          return documento;
+    async actualizarDocumento(documentoId: string, data: any){
+
+        await this.documentoRepository.update(documentoId, data);
+        const documento = this.documentoRepository.findOne({where: {id: documentoId}});
+        return documento;
     }
 
     async borrarDocumento(documentoId: string){
