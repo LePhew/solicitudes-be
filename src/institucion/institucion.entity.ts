@@ -12,4 +12,10 @@ export class InstitucionEntity {
     @Column()
     descripcion: string;
 
+    @Column({ unique: true, length: 15, nullable: true })
+    institucionUsuario: string;
+
+    @Column({ nullable: true })
+    institucionPwd: string;
+
 }

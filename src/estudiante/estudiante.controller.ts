@@ -5,46 +5,46 @@ import { EstudianteDTO } from './estudiante.dto';
 @Controller('estudiante')
 export class EstudianteController {
 
-    constructor(private estudianteService: EstudianteService){}
+    constructor(private estudianteService: EstudianteService) { }
 
     @Get()
-    getEstudiantes(){
+    getEstudiantes() {
         return this.estudianteService.getEstudiantes();
     }
-    
+
     @Get(':id')
-    getEstudiante(@Param('id') id: string){
+    getEstudiante(@Param('id') id: string) {
         return this.estudianteService.getEstudiante(id);
     }
-    
+
     @Get('bymat/:mat')
-    getEstudianteByMatricula(@Param('mat') matricula: string){
+    getEstudianteByMatricula(@Param('mat') matricula: string) {
         return this.estudianteService.getEstudianteByMat(matricula);
     }
-    
+
     @Get('byced/:ced')
-    getEstudianteByCedula(@Param('ced') cedula: string ){
+    getEstudianteByCedula(@Param('ced') cedula: string) {
         return this.estudianteService.getEstudianteByCed(cedula);
     }
 
     @Post('autenticar')
-    autenticarUsuario(@Body('cedula') cedula: string, @Body('contrasena') contrasena: string ){
+    autenticarUsuario(@Body('cedula') cedula: string, @Body('contrasena') contrasena: string) {
         console.log(cedula, contrasena);
         return this.estudianteService.autenticar(cedula, contrasena);
     }
-    
+
     @Post()
-    crearEstudiante(@Body() data: EstudianteDTO){
+    crearEstudiante(@Body() data: EstudianteDTO) {
         return this.estudianteService.crearEstudiante(data);
     }
 
     @Put(':id')
-    actualizarEstudiante(@Param('id') id: string, @Body() data: any){
+    actualizarEstudiante(@Param('id') id: string, @Body() data: any) {
         return this.estudianteService.actualizarEstudiante(id, data);
     }
 
     @Delete(':id')
-    borrarEstudiante(@Param('id') id: string){
+    borrarEstudiante(@Param('id') id: string) {
         return this.estudianteService.borrarEstudiante(id);
     }
 
