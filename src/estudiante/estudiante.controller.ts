@@ -29,7 +29,6 @@ export class EstudianteController {
 
     @Post('autenticar')
     autenticarUsuario(@Body('cedula') cedula: string, @Body('contrasena') contrasena: string) {
-        console.log(cedula, contrasena);
         return this.estudianteService.autenticar(cedula, contrasena);
     }
 

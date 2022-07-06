@@ -31,8 +31,4 @@ export class NotificacionesService {
             this.notificacionesRepository.update(item['id'], item);
         })
     }
-
-
-
-
 }
