@@ -13,6 +13,6 @@ export class EventsGateway {
 
   @SubscribeMessage('solicitud-creada')
   handleMessage(@MessageBody() data: any) {
-    return { creada: "true" }
+    return { creada: "true", data: data };
   }
 }
